@@ -1,0 +1,22 @@
+// Landing Page Container
+// ====================
+
+.section {
+  padding: 10% 0;
+}
+
+.block {
+  display: inline-block;
+  max-width: 360px;
+  margin: 20px;
+  // temp
+  .fake-image {
+    background: #ccc;
+    width: 360px;
+    height: 200px;
+  }
+}
+
+.center-up {
+  @include center-up;
+}

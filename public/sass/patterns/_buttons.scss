@@ -1,0 +1,26 @@
+// Button Design
+// ====================
+
+.btn {
+  background: $color-brand-light;
+  color: $color-brand-dark;
+  font-size: 110%;
+  border-radius: 3px;
+  padding: 6px 14px;
+  border: 0;
+  text-decoration: none;
+  &:focus {
+    outline: $color-brand-light auto 1px;
+  }
+}
+
+.btn--primary {
+  background: $color-primary;
+  &:hover {
+    background: darken($color-primary, 10%);
+  }
+}
+
+.btn--form {
+  float: right;
+}

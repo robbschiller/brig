@@ -1,0 +1,15 @@
+body
+  .container--auth.centered
+    h1 App
+    h3 Sign In
+    hr
+    form.form(action="/signin", method="POST")
+      label.lbl Email Address
+      input(type="email", name="email", placeholder="Email Address").ipt
+      label.lbl Password
+      span
+        a.span.pwd--span(href="/forgot-password") Forgot your Password?
+      input(type="password", name="password", placeholder="Password").ipt
+      span
+        a.span.acct--span(href="/signup") Need an Account?
+      button(type="submit").btn.btn--primary.btn--form Sign in

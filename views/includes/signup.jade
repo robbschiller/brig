@@ -1,0 +1,15 @@
+body
+  .container--auth.centered
+    h1 App
+    h3 Sign Up
+    hr
+    form.form(action="/signup", method="POST")
+      label.lbl Name
+      input(type="text", name="name", placeholder="Name").ipt
+      label.lbl Email Address
+      input(type="email", name="email", placeholder="Email Address").ipt
+      label.lbl Password
+      input(type="password", name="password", placeholder="Password").ipt
+      span
+        a.span.acct--span(href="/signin") Trying to Sign in?
+      button(type="submit").btn.btn--primary.btn--form Sign up

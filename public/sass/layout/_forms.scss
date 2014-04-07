@@ -1,0 +1,24 @@
+// Root Import File
+// ====================
+
+.form {
+  .ipt {
+    margin-bottom: 1em;
+  }
+  .span {
+    text-decoration: none;
+    color: #ccc;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .pwd--span {
+    font-size: 80%;
+    float: right;
+    line-height: 22px;
+  }
+  .acct--span {
+    float: left;
+    line-height: 38px;
+  }
+}

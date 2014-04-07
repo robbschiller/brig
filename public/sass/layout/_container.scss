@@ -1,0 +1,19 @@
+// Landing Page Container
+// ====================
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container--auth {
+  max-width: 300px;
+  margin: 0 auto;
+  hr {
+    border: 2px solid #ccc;
+  }
+}
+
+.centered {
+  text-align: center;
+}

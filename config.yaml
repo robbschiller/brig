@@ -1,0 +1,14 @@
+
+default:
+  mongo: 'mongo'
+
+  collections:
+    - authors
+    - subscribers
+    - lists
+    - subscriptions
+    - posts
+    - sessions
+    - forgot
+
+  PORT: 3000
