@@ -1,7 +1,7 @@
 {
   "name": "brig",
   "version": "0.0.0",
-  "description": "Express boilerplate",
+  "description": "express boilerplate",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests"
