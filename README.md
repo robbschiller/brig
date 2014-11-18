@@ -36,18 +36,6 @@ The test suite is run using [mocha](http://github.com/visionmedia/mocha). To run
 $ npm test
 ```
 
-You should see an output roughly like:
-
-```
-> human@0.0.0 test /Users/tjkrusinski/Websites/Futura/brig
-> mocha tests
-
-
-  ․․․․․․․․․․․․․․․․․․․․․․․․․․
-
-    26 passing (2s)
-```
-
 ## License
 
 MIT
