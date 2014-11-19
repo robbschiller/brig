@@ -3,11 +3,7 @@ default:
   mongo: 'mongo'
 
   collections:
-    - authors
-    - subscribers
-    - lists
-    - subscriptions
-    - posts
+    - users
     - sessions
     - forgot
 

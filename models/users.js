@@ -2,69 +2,64 @@
 
 var db = require('../lib/db');
 var reg = require('../lib/email-reg');
-var validator = require('../lib/validate').author;
+var validator = require('../lib/validate').user;
 var idgen = require('idgen');
 var defaultCb = require('../lib/default-cb');
 
 /**
- *  Create an author
+ *  Create a user
  */
-
 exports.create = function(data, cb) {
-  var author = validator(data);
-  if (author.invalid) return cb(author.message || 'Invalid author data', null);
-  author.id = idgen(32);
-  author.active = true;
-  author.created = new Date().toUTCString();
-  this.getByEmail(author.email, function(err, data){
+  var user = validator(data);
+  if (user.invalid) return cb(user.message || 'Invalid user data', null);
+  user.id = idgen(32);
+  user.active = true;
+  user.created = new Date().toUTCString();
+  this.getByEmail(user.email, function(err, data){
     if (err) return cb(err, null);
     if (data.length) return cb('Email already in use', null);
-    db.authors.insert(author, function(err, data){
+    db.users.insert(user, function(err, data){
       if (err) return db(err, null);
-      exports.get(author.id, cb);
+      exports.get(user.id, cb);
     });
   });
 };
 
 /**
- *  Get an author
+ *  Get a user
  */
-
 exports.get = function(id, cb) {
   if (!id) return cb('No id provided to get user', null);
-  db.authors.find({id:id}, defaultCb(cb));
+  db.users.find({id:id}, defaultCb(cb));
 };
 
 /**
- *  Get an author by email
+ *  Get a user by email
  */
-
 exports.getByEmail = function(email, cb) {
   if (!email) return cb('No id provided to get user', null);
   if (!reg(email)) return cb('Invalid email to get user for', null);
-  db.authors.find({email:email}, defaultCb(cb));
+  db.users.find({email:email}, defaultCb(cb));
 };
 
 /**
- *  Update an author
+ *  Update a user
  */
-
 exports.update = function(id, data, cb) {
   if (!id) return cb('No id provided to update user', null);
   if (!data) data = {};
 
   if (data.email) delete data.email;
 
-  db.authors.update({id:id}, {$set:data}, function(err, data){
+  db.users.update({id:id}, {$set:data}, function(err, data){
     if (err) return cb(err, null);
     exports.get(id, cb);
   });
 };
 
 /**
- *  Remove an author
+ *  Remove a user
  */
-
 exports.remove = function(id, cb) {
   this.update(id, {active:false}, cb);
 };
@@ -72,7 +67,6 @@ exports.remove = function(id, cb) {
 /**
  *  Delete an author
  */
-
 exports.delete = function(id, cb) {
-  db.authors.remove({id:id}, defaultCb(cb));
+  db.users.remove({id:id}, defaultCb(cb));
 };

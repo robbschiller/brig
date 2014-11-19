@@ -1,0 +1,34 @@
+// Glob - Keyframe animation mixins
+// ================================
+
+// Keyframe Mixin
+// ---------------------------------------------------
+// Adds vendor prefixes to keyframes
+// ---------------------------------------------------
+@mixin keyframe ($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+}
+
+// Animation Mixin
+// --------------------------------------------------
+// Call your animation and pass some arguments, use
+// autoprefixer for vendor prefixing.
+// --------------------------------------------------
+@mixin animation ($animation, $duration, $function, $delay: 0, $count: 1) {
+  animation-name: $animation;
+  animation-duration: $duration;
+  animation-timing-function: $function;
+  animation-delay: $delay;
+  animation-iteration-count: $count;
+}

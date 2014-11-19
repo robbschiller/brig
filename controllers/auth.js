@@ -2,7 +2,7 @@
 
 var idgen = require('idgen');
 var sessions = require('../models/sessions');
-var authors = require('../models/authors');
+var users = require('../models/users');
 var pass = require('../lib/password');
 var errors = require('../lib/errors');
 
@@ -15,7 +15,6 @@ var cookieObj = {
 /**
  *	Query for the cookie in the sessions collection
  */
-
 exports.get = function() {
   return function(req, res, next) {
     var cookie = req.cookies.human;
@@ -32,7 +31,6 @@ exports.get = function() {
  *	Set a cookie if none
  *	@function setCookie
  */
-
 exports.setCookie = function() {
   return function(req, res, next) {
     var cookie = req.cookies.human;
@@ -50,13 +48,12 @@ exports.setCookie = function() {
 /**
  *  Try to log a user in
  */
-
 exports.try = function(req, res, next) {
   if (res.locals.user) return res.redirect('/');
   var email = req.body.email;
   var password = pass(req.body.password);
 
-  authors.getByEmail(email, function(err, data){
+  users.getByEmail(email, function(err, data){
     if (err) errors.fiveOhThree(req, res, err);
     res.success = true;
     if (!data.length || password !== data[0].password) res.success = false;
@@ -68,7 +65,6 @@ exports.try = function(req, res, next) {
 /**
  *  Put the session in the db
  */
-
 exports.makeSession = function(req, res, next) {
   if (!res.success) return next();
   var id = res.locals.user.id;
@@ -94,7 +90,6 @@ exports.remove = function(req, res, next) {
 /**
  *  Redir if needed
  */
-
 exports.verify = function(path) {
   return function(req, res, next){
     if (res.session.user) return res.redirect(path);
@@ -105,7 +100,6 @@ exports.verify = function(path) {
 /**
  *  Create auth
  */
-
 exports.auto = function(req, res, next) {
   var id = res.locals.user.id;
   var cookie = req.cookies.human;

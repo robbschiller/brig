@@ -1,14 +1,12 @@
 'use strict';
 
 var db = require('../lib/db');
-var emailreg = require('../lib/email-reg');
 var defaultCb = require('../lib/default-cb');
 var idgen = require('idgen');
 
 /**
  *  Create a case
  */
-
 exports.create = function(email, cb) {
   if (!email || !emailreg(email))
     return cb('Invalid email to recover account for', null);
@@ -27,7 +25,6 @@ exports.create = function(email, cb) {
 /**
  *  Get the forgot case
  */
-
 exports.get = function(caseId, cb) {
   if (!caseId) return cb('Invalid case id', null);
   var query = { id: caseId };
@@ -37,7 +34,6 @@ exports.get = function(caseId, cb) {
 /**
  *  Resolve a forgotten password
  */
-
 exports.resolve = function(caseId, cb) {
   if (!caseId) return cb('Invalid case id', null);
   var query = { id: caseId };
@@ -51,7 +47,6 @@ exports.resolve = function(caseId, cb) {
 /**
  *  Delete a case (for testing)
  */
-
 exports.delete = function(caseId, cb) {
   if (!caseId) return cb('Invalid case id', null);
   var query = { id: caseId };

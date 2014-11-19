@@ -28,14 +28,6 @@ To have gulp run the server and the `watch` task, run:
 $ gulp
 ```
 
-## Running Tests
-
-The test suite is run using [mocha](http://github.com/visionmedia/mocha). To run the suite run:
-
-```
-$ npm test
-```
-
 ## License
 
 MIT

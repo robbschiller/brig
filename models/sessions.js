@@ -5,7 +5,6 @@ var db = require('../lib/db');
 /**
  *  Get a session from the db
  */
-
 exports.get = function(cookie, cb) {
   db.sessions.findOne({cookie:cookie}, cb);
 };
@@ -13,7 +12,6 @@ exports.get = function(cookie, cb) {
 /**
  *  Set a session in the db
  */
-
 exports.set = function(cookie, user, cb) {
   var obj = {
     user: user,
@@ -26,7 +24,6 @@ exports.set = function(cookie, user, cb) {
 /**
  *  Del a session from the db
  */
-
 exports.del = function(cookie, cb) {
   var obj = { cookie: cookie };
   db.sessions.remove(obj, cb);

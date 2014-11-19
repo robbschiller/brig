@@ -1,12 +1,10 @@
 'use strict';
 
 var app = require(__dirname+'/../app.js');
-var authors = require('../controllers/authors');
-var lists = require('../controllers/lists');
-var posts = require('../controllers/posts');
+var users = require('../controllers/users');
 var auth = require('../controllers/auth');
 
-app.get('/', authors.get, function(req, res){
+app.get('/', users.get, function(req, res){
   if (!res.session.user) return res.render('index');
   res.render('app');
 });
@@ -15,7 +13,7 @@ app.get('/signin', auth.verify('/'), function(req, res){
   res.render('signin');
 });
 
-app.post('/signin', authors.get,
+app.post('/signin', users.get,
   auth.try, auth.makeSession, function(req, res){
   if (!res.success) {
     res.locals.invalid = true;
@@ -27,7 +25,7 @@ app.get('/signup', auth.verify('/'), function(req, res){
   res.render('signup');
 });
 
-app.post('/signup', auth.verify('/'), authors.create,
+app.post('/signup', auth.verify('/'), users.create,
   auth.auto, function(req, res){
   res.redirect('/');
 });
