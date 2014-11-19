@@ -3,7 +3,9 @@
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
-var browserify = require('gulp-browserify');
+var rename = require('gulp-rename');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
 
 var paths = {
   browserify: {
@@ -19,6 +21,19 @@ var paths = {
     options: {},
   },
 };
+
+gulp.task('bundle-app', function() {
+  return browserify([
+    './client/main.jsx'
+  ], {
+      debug: process.env.NODE_ENV == 'development' // if so source maps
+    })
+    .transform({global: true}, 'reactify')
+    .bundle()
+    .pipe(source('main.js'))
+    .pipe(rename('main.app.js'))
+    .pipe(gulp.dest('./public/dist/'));
+});
 
 gulp.task('browserify', function(){
   return gulp.src(paths.browserify.in)

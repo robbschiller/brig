@@ -15,10 +15,6 @@ app.set('view engine', 'jade');
 app.use(express.static('public'));
 app.use(auth.get());
 
-app.configure('development', function(){
-  app.use(express.logger('dev'));
-});
-
 app.listen(process.env.PORT, function(){
   console.log('server listening on 127.0.0.1:%d', process.env.PORT);
   require('./routes');
