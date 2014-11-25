@@ -1,3 +1,12 @@
-include includes/header
+include includes/head
 
-include includes/signin
+body
+    p Sign In
+    form(action="/signin", method="POST")
+      label Email Address
+      input(type="email", name="email", placeholder="Email Address")
+      label.lbl Password
+      a(href="/forgot-password") Forgot your Password?
+      input(type="password", name="password", placeholder="Password")
+      a(href="/signup") Need an Account?
+      button(type="submit") Sign in

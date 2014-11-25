@@ -1,3 +1,13 @@
-include includes/header
+include includes/head
 
-include includes/signup
+body
+    p Sign Up
+    form(action="/signup", method="POST")
+      label Name
+      input(type="text", name="name", placeholder="Name")
+      label Email Address
+      input(type="email", name="email", placeholder="Email Address")
+      label Password
+      input(type="password", name="password", placeholder="Password")
+      a(href="/signin") Trying to Sign in?
+      button(type="submit") Sign up
